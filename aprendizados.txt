@@ -1,0 +1,23 @@
+UNIDADE DE MEDIDAS:
+	REM - Cada 1 rem equivale ao tamanho do font size do meu root, do meu html(tag - padrao 16px) - root em
+	EM - Pega o tamanho relativo do componente que ta em volta
+
+	- se adaptam ao tamanho que o usuario utiliza em seu sistema operacional - acessibilidade
+
+PAGES -> _app:
+	é um arquivo que fica por volta de todas nossas paginas, toda vez que troco de pagina, o que ta dentro dele é recarregado.
+
+Logo, para fazer algo de configuração no meu app, posso utilizar o _document -> ele é o respectivo do .html do react. Ele é sempre chamado uma vez
+
+------------------
+styles.module.scss -> o .module faz com que esse estilo nunca seja compartilhado com outros lugares na aplicação
+o import fica - import styles from "./styles.module.scss"
+
+-----------------
+https://www.npmjs.com/package/json-server
+- consigo fazer um api fake, com CRUD, com arquivos json
+
+script - "server": "json-server server.json -w -d 750 -p 3333"
+-w -> fica em watch modde, toda vez que trocar uma informação no servidor vai reiniciar
+-d -> delay, nesse caso de 750 ms
+-p -> porta que ele vai executar, nesse caso na 3333
