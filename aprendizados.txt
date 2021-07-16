@@ -21,3 +21,7 @@ script - "server": "json-server server.json -w -d 750 -p 3333"
 -w -> fica em watch modde, toda vez que trocar uma informação no servidor vai reiniciar
 -d -> delay, nesse caso de 750 ms
 -p -> porta que ele vai executar, nesse caso na 3333
+
+--------------
+FORMATAÇÂO DE DADOS -> é bom fazer sempre antes de chegar no componente, pra evitar que algo desnecessario seja renderizado e executado novamente
+	no rerender do componente. No caso da page do next, bom fazer no server side
