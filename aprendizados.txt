@@ -23,5 +23,19 @@ script - "server": "json-server server.json -w -d 750 -p 3333"
 -p -> porta que ele vai executar, nesse caso na 3333
 
 --------------
+
+webpagetest -> para testar performance
+
+--------------
 FORMATAÇÂO DE DADOS -> é bom fazer sempre antes de chegar no componente, pra evitar que algo desnecessario seja renderizado e executado novamente
 	no rerender do componente. No caso da page do next, bom fazer no server side
+
+--------------
+Posso fazer prefetch no onMouseEnter no Link com o router do next, para a pagina que ele vai ser redirecionado. Dessa forma o conteúdo ja esta carregado
+antes de clicar
+---------------
+PAGINAS ESTATICAS DINAMICAS: Quando vamos trabalhar com paginas estaticas dinamicas, ou seja, com getStaticProps, e a pagina nessecita de um slug, preciso usar
+o getStaticPaths.
+
+-----------------
+& + span {} -> todos os spans, menos o primeiro em uma lista
