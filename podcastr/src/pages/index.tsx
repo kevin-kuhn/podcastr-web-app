@@ -5,8 +5,10 @@ import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
 import { api } from "../services/api"
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString"
+import { useContext } from "react"
 
 import playGreenImg from "../../public/play-green.svg"
+import { usePlayer } from "../contexts/player"
 
 import styles from "../styles/home.module.scss"
 
@@ -27,6 +29,8 @@ type HomeProps = {
 }
 
 const Home: NextPage<HomeProps> = ({ latestEpisodes, allEpisodes }) => {
+	const { playEpisode } = usePlayer()
+
 	return (
 		<div className={styles.homePage}>
 			<section className={styles.latestEpisodes}>
@@ -51,7 +55,7 @@ const Home: NextPage<HomeProps> = ({ latestEpisodes, allEpisodes }) => {
 								<span>{episode.durationAsString}</span>
 							</div>
 
-							<button type='button'>
+							<button type='button' onClick={() => playEpisode(episode)}>
 								<Image src={playGreenImg} alt='Tocar episódio' />
 							</button>
 						</li>
@@ -92,7 +96,7 @@ const Home: NextPage<HomeProps> = ({ latestEpisodes, allEpisodes }) => {
 								<td style={{ width: 100 }}>{episode.publishedAt}</td>
 								<td>{episode.durationAsString}</td>
 								<td>
-									<button type='button'>
+									<button type='button' onClick={() => playEpisode(episode)}>
 										<Image src={playGreenImg} alt='Tocar episódio' />{" "}
 									</button>
 								</td>

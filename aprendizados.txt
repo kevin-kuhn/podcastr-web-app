@@ -35,7 +35,24 @@ Posso fazer prefetch no onMouseEnter no Link com o router do next, para a pagina
 antes de clicar
 ---------------
 PAGINAS ESTATICAS DINAMICAS: Quando vamos trabalhar com paginas estaticas dinamicas, ou seja, com getStaticProps, e a pagina nessecita de um slug, preciso usar
-o getStaticPaths.
+o getStaticPaths. Como a pagina é estatica e é gerada no momento da build, não tem como o next saber qual episodio, no caso, gerar de forma estatica.
+vai me retornar quais episodios quero retornar de forma estatica no momento da build
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	return {
+		paths: [
+			{ params: { slug: "a-importancia-da-contribuicao-em-open-source" } },
+		],
+		fallback: "blocking",
+	}
+}
+
+	- nesse caso, ele gera de forma estatica esse episodio tambem, quando o path é vazio não gera de forma estatica nenhum.
+	- Vai funcionar entrando na pagina, mesmo sem ter gerado de forma estatica, quando o fallback: "blocking", pois faz a requisição em server side
+	  só vai para a pagina quando carregar, quando for false, ele vai dar 404 para todas as paginas dinamicas que nao foram geradas em build. 
+	  Quando true, faz com que a chamada da pagina seja feita em client side
+
+	- Posso fazer com que os episodios mais visitados, ou categorias, produto, etc mais acessados sejam gerados em tempo de build dessa forma
 
 -----------------
 & + span {} -> todos os spans, menos o primeiro em uma lista
