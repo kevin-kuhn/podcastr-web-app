@@ -5,9 +5,12 @@ import ptBR from "date-fns/locale/pt-BR"
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
 import Image from "next/image"
 import Link from "next/link"
+import Head from "next/head"
 
 import arrowLeftImg from "../../../public/arrow-left.svg"
 import playImg from "../../../public/play.svg"
+
+import { usePlayer } from "../../contexts/player"
 
 import styles from "../../styles/episode.module.scss"
 
@@ -28,8 +31,14 @@ type EpisodeProps = {
 }
 
 const Episode: NextPage<EpisodeProps> = ({ episode }) => {
+	const { playEpisode } = usePlayer()
+
 	return (
 		<div className={styles.episode}>
+			<Head>
+				<title>{episode.title}</title>
+			</Head>
+			
 			<div className={styles.thumbnailContainer}>
 				<Link href='/' passHref>
 					<button type='button'>
@@ -43,7 +52,7 @@ const Episode: NextPage<EpisodeProps> = ({ episode }) => {
 					objectFit='cover'
 					alt={episode.title}
 				/>
-				<button type='button'>
+				<button type='button' onClick={() => playEpisode(episode)}>
 					<Image src={playImg} alt='Tocar episódio' />
 				</button>
 			</div>

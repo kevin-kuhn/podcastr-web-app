@@ -56,3 +56,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 -----------------
 & + span {} -> todos os spans, menos o primeiro em uma lista
+
+----------------
+lib slider -> rc-slider
